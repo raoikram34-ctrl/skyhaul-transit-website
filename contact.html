@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Get a Freight Quote & Contact Us | Skyhaul Transit Inc.</title>
+    <meta name="description" content="Request a freight shipping quote from Skyhaul Transit Inc. Connect with our 24/7 logistics dispatch team for FTL, LTL, and cargo recovery services.">
+    <meta name="keywords" content="get a freight quote, trucking dispatch contact, emergency cargo recovery, logistics support hotline">
+    
+    <!-- Icons (RemixIcon CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="js-scroll-progress"></div>
+
+    <!-- Preloader Overlay -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <img src="assets/logo-light.svg" alt="Skyhaul Transit Logo" class="preloader-logo">
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Magnetic Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Header Navigation -->
+    <header class="header" id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo-dark.svg" alt="Skyhaul Transit Inc. Logo" class="logo-img">
+            </a>
+            
+            <nav class="nav" id="main-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown-wrap">
+                    <a href="services.html" class="nav-link dropdown-toggle">Services <i class="ri-arrow-down-s-line dropdown-icon"></i></a>
+                    <div class="nav-dropdown">
+                        <div class="dropdown-grid">
+                            <a href="ftl.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-archive-stack-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Full Truckload (FTL)</h4>
+                                    <p>Dedicated exclusive capacity.</p>
+                                </div>
+                            </a>
+                            <a href="ltl.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-grid-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Less Than Truckload (LTL)</h4>
+                                    <p>Consolidated cost savings.</p>
+                                </div>
+                            </a>
+                            <a href="expedited.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-speed-up-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Expedited Freight</h4>
+                                    <p>Time-critical team drivers.</p>
+                                </div>
+                            </a>
+                            <a href="cross-border.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-global-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Cross-Border</h4>
+                                    <p>International coordination.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="services.html">View All Services & Fleet <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link active">Contact Us</a>
+                <a href="contact.html" class="btn btn-primary header-btn" style="padding: 0.6rem 1.2rem; font-size: 0.95rem; margin-left: 1rem;">
+                    Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
+                </a>
+            </nav>
+
+            <button class="burger" aria-label="Toggle Menu" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="about-hero" style="padding-bottom: var(--spacing-xxl); padding-top: 140px;">
+        <div class="container">
+            <div class="badge badge-orange" data-reveal="fade-in">Request Quote</div>
+            <h1 data-reveal-text>Get a Freight Quote</h1>
+            <p data-reveal="slide-up" class="delay-200" style="max-width: 700px; margin: var(--spacing-sm) auto 0 auto; color: var(--color-text-main);">
+                Submit your shipment details through our multi-step quote interface. Our dispatch coordinators will evaluate your lanes and return pricing estimates in under 15 minutes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact & Quote Form Section -->
+    <section class="section">
+        <div class="container contact-container">
+            
+            <!-- Left Panel: Contact Info & Map Card -->
+            <div class="contact-info-panel" data-reveal="slide-right">
+                <h2>Logistics Dispatch</h2>
+                <p>Reach our freight coordinators at any time. We keep dispatch support active 24/7/365 to handle transit updates and recovery.</p>
+                
+                <div class="contact-info-list">
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon-wrap"><i class="ri-phone-fill"></i></div>
+                        <div class="contact-info-text">
+                            <h4>Dispatch Hotline (24/7)</h4>
+                            <p><a href="tel:18005550199">+1 (800) 555-0199</a></p>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon-wrap"><i class="ri-mail-fill"></i></div>
+                        <div class="contact-info-text">
+                            <h4>Direct Email</h4>
+                            <p><a href="mailto:dispatch@skyhaultransit.com">dispatch@skyhaultransit.com</a></p>
+                        </div>
+                    </div>
+                    <!-- Office -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon-wrap"><i class="ri-map-pin-2-fill"></i></div>
+                        <div class="contact-info-text">
+                            <h4>Corporate Office</h4>
+                            <p>100 Transit Boulevard, Suite 500<br>Chicago, IL 60601</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Styled Vector Map Placeholder -->
+                <div class="contact-map-placeholder">
+                    <div class="contact-map-pin">
+                        <i class="ri-map-pin-5-fill"></i>
+                        <p>Skyhaul HQ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Multi-Step Form -->
+            <div class="quote-form-card" data-reveal="slide-left">
+                <!-- Visual Steps bar -->
+                <div class="form-steps">
+                    <div class="form-step-progress"></div>
+                    <div class="form-step-node active">1</div>
+                    <div class="form-step-node">2</div>
+                    <div class="form-step-node">3</div>
+                </div>
+
+                <!-- Form Element -->
+                <form id="shipper-quote-form" action="#" method="POST">
+                    
+                    <!-- STEP 1: Routing Details -->
+                    <div class="form-pane active">
+                        <h3 style="margin-bottom: var(--spacing-md);">Step 1: Origin & Destination</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="origin-input">Origin City or Zip Code *</label>
+                                <input type="text" id="origin-input" placeholder="e.g. Chicago, IL or 60601" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination-input">Destination City or Zip Code *</label>
+                                <input type="text" id="destination-input" placeholder="e.g. Dallas, TX or 75201" required>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="date-input">Desired Pickup Date *</label>
+                                <input type="date" id="date-input" required>
+                            </div>
+                        </div>
+                        <div class="form-nav-buttons">
+                            <div></div> <!-- spacer -->
+                            <button type="button" class="btn btn-primary form-next-btn">Next Step <i class="ri-arrow-right-line btn-icon"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Freight Details -->
+                    <div class="form-pane">
+                        <h3 style="margin-bottom: var(--spacing-md);">Step 2: Cargo Specifications</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="equipment-input">Required Trailer Equipment *</label>
+                                <select id="equipment-input" required>
+                                    <option value="" disabled selected>Select Trailer Type...</option>
+                                    <option value="dry-van">Dry Van (53ft)</option>
+                                    <option value="reefer">Reefer (Temp-Controlled)</option>
+                                    <option value="flatbed">Flatbed</option>
+                                    <option value="step-deck">Step Deck</option>
+                                    <option value="power-only">Power Only</option>
+                                    <option value="box-truck">Box Truck</option>
+                                    <option value="hotshot">Hotshot</option>
+                                    <option value="conestoga">Conestoga</option>
+                                    <option value="rgn-lowboy">RGN / Lowboy</option>
+                                    <option value="specialized">Specialized Equipment</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="weight-input">Total Weight (lbs) *</label>
+                                <input type="number" id="weight-input" min="1" placeholder="e.g. 42000" required>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="commodity-input">Commodity / Description *</label>
+                                <input type="text" id="commodity-input" placeholder="e.g. Packaged Foods, Industrial Steel" required>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="notes-input">Additional Load Instructions / Requirements</label>
+                                <textarea id="notes-input" rows="3" placeholder="e.g. Needs liftgate, driver-assist load, high-value insurance requirements..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-nav-buttons">
+                            <button type="button" class="btn btn-secondary form-prev-btn"><i class="ri-arrow-left-line" style="margin-right: var(--spacing-xs)"></i> Back</button>
+                            <button type="button" class="btn btn-primary form-next-btn">Next Step <i class="ri-arrow-right-line btn-icon"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Contact details -->
+                    <div class="form-pane">
+                        <h3 style="margin-bottom: var(--spacing-md);">Step 3: Contact & Company Info</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="company-input">Company Name *</label>
+                                <input type="text" id="company-input" placeholder="e.g. Apex Logistics Corp" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name-input">Your Name *</label>
+                                <input type="text" id="name-input" placeholder="e.g. Marcus Sterling" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-input">Work Email *</label>
+                                <input type="email" id="email-input" placeholder="e.g. logistics@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-input">Phone Number *</label>
+                                <input type="tel" id="phone-input" placeholder="e.g. (555) 019-9234" required>
+                            </div>
+                        </div>
+                        <div class="form-nav-buttons">
+                            <button type="button" class="btn btn-secondary form-prev-btn"><i class="ri-arrow-left-line" style="margin-right: var(--spacing-xs)"></i> Back</button>
+                            <button type="submit" class="btn btn-primary">Submit Freight Quote <i class="ri-check-line btn-icon"></i></button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- Success Screen Viewport (Hidden initially) -->
+                <div class="success-screen" style="display: none;">
+                    <div class="success-icon-wrap">
+                        <i class="ri-checkbox-circle-line"></i>
+                    </div>
+                    <h2>Freight Quote Submitted!</h2>
+                    <p style="margin: var(--spacing-md) 0 var(--spacing-lg) 0; color: var(--color-text-main);">
+                        Your load parameters have been successfully received and dispatched to our lane pricing desks. An expert broker will contact you with carrier capacity and pricing matches in under 15 minutes.
+                    </p>
+                    <a href="index.html" class="btn btn-secondary">Return to Homepage</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="assets/logo-light.svg" alt="Skyhaul Transit Inc. Logo" class="footer-logo">
+                <p>Connecting shippers with trusted carriers across North America. Delivering transparency, safety, and performance for every load.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.25rem;">
+                    <a href="#" aria-label="LinkedIn" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>
+                    <a href="#" aria-label="Twitter" class="footer-link"><i class="ri-twitter-x-fill"></i></a>
+                    <a href="#" aria-label="Facebook" class="footer-link"><i class="ri-facebook-box-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="services.html" class="footer-link">Services</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <div class="footer-links">
+                    <a href="ftl.html" class="footer-link">Full Truckload (FTL)</a>
+                    <a href="ltl.html" class="footer-link">Less Than Truckload (LTL)</a>
+                    <a href="expedited.html" class="footer-link">Expedited Cargo</a>
+                    <a href="cross-border.html" class="footer-link">Cross-Border Shipping</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Dispatch</h4>
+                <div class="footer-contact-list">
+                    <div class="footer-contact-item">
+                        <i class="ri-phone-fill footer-contact-icon"></i>
+                        <div class="footer-contact-text">
+                            <h5>Phone Support (24/7)</h5>
+                            <p><a href="tel:18005550199">+1 (800) 555-0199</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="ri-mail-fill footer-contact-icon"></i>
+                        <div class="footer-contact-text">
+                            <h5>Email Address</h5>
+                            <p><a href="mailto:dispatch@skyhaultransit.com">dispatch@skyhaultransit.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 SKYHAUL TRANSIT INC. All rights reserved. <br />
+                      Design & Developed with 🩷 by Custom Design 360</p>
+            <div class="footer-bottom-links">
+                <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Javascript File -->
+    <script src="js/main.js"></script>
+</body>
+</html>

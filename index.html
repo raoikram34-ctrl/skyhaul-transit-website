@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Skyhaul Transit Inc. | Premium North American Freight Brokerage</title>
+    <meta name="description" content="Skyhaul Transit Inc. provides reliable, efficient, and cost-effective freight brokerage solutions across the US, Canada, and Mexico. Get a freight quote today!">
+    <meta name="keywords" content="get a freight quote, freight brokerage, shipping carriers, dry van, reefer, FTL, LTL, expedited cargo, logistics planning, driver cancelled rescue">
+    
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:title" content="Skyhaul Transit Inc. | Reliable Freight Brokerage">
+    <meta property="og:description" content="Connecting shippers with trusted carriers across North America. Real-time tracking and 24/7 logistics support.">
+    <meta property="og:type" content="website">
+    
+    <!-- Icons (RemixIcon CDN - Lightweight vector icons) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="js-scroll-progress"></div>
+
+    <!-- Preloader Overlay -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <img src="assets/logo-flex.png" alt="Skyhaul Transit Logo" class="preloader-logo">
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Magnetic Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Sticky Header -->
+    <header class="header" id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo-flex.png" alt="Skyhaul Transit Inc. Logo" class="logo-img">
+            </a>
+
+            <!-- Navigation Bar -->
+            <nav class="nav" id="main-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <div class="nav-dropdown-wrap">
+                    <a href="services.html" class="nav-link dropdown-toggle">Services <i class="ri-arrow-down-s-line dropdown-icon"></i></a>
+                    <div class="nav-dropdown">
+                        <div class="dropdown-grid">
+                            <a href="ftl.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-archive-stack-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Full Truckload (FTL)</h4>
+                                    <p>Dedicated exclusive capacity.</p>
+                                </div>
+                            </a>
+                            <a href="ltl.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-grid-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Less Than Truckload (LTL)</h4>
+                                    <p>Consolidated cost savings.</p>
+                                </div>
+                            </a>
+                            <a href="expedited.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-speed-up-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Expedited Freight</h4>
+                                    <p>Time-critical team drivers.</p>
+                                </div>
+                            </a>
+                            <a href="cross-border.html" class="dropdown-item">
+                                <div class="dropdown-item-icon"><i class="ri-global-line"></i></div>
+                                <div class="dropdown-item-info">
+                                    <h4>Cross-Border</h4>
+                                    <p>International coordination.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="services.html">View All Services & Fleet <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="contact.html" class="btn btn-primary header-btn" style="padding: 0.6rem 1.2rem; font-size: 0.95rem; margin-left: 1rem;">
+                    Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
+                </a>
+            </nav>
+
+            <!-- Hamburger Button for Mobile -->
+            <button class="burger" aria-label="Toggle Menu" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge badge-orange" data-reveal="fade-in">
+                    <i class="ri-shield-check-line"></i> North American Logistics Leader
+                </div>
+                <h1 data-reveal-text>Moving Freight. Building Trust.</h1>
+                <p data-reveal="slide-up" class="delay-200">
+                    We provide reliable, efficient, and cost-effective freight brokerage solutions across the United States, Canada, and Mexico. Experience seamless transportation coordinated by dedicated logistics experts.
+                </p>
+                <div class="hero-actions" data-reveal="slide-up" class="delay-300">
+                    <a href="contact.html" class="btn btn-primary">
+                        Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        Talk to a Logistics Expert
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-graphic" data-reveal="scale-up">
+                <div class="hero-circle-backdrop"></div>
+                <div class="hero-illustration">
+                    <!-- Beautiful SVG Map / Logistics Grid illustration -->
+                    <svg viewBox="0 0 400 400" width="100%" height="100%">
+                        <!-- Connective route lines -->
+                        <path d="M 50 150 Q 150 100 250 200" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="6,4" />
+                        <path d="M 120 280 Q 220 220 320 180" fill="none" stroke="#ff6600" stroke-width="3" opacity="0.8" />
+                        <path d="M 80 80 Q 200 180 300 320" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="6,4" />
+                        
+                        <!-- Pulse node 1 -->
+                        <g transform="translate(120, 280)">
+                            <circle cx="0" cy="0" r="16" fill="rgba(255, 102, 0, 0.15)">
+                                <animate attributeName="r" values="8;20;8" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="0" cy="0" r="6" fill="#ff6600" />
+                        </g>
+
+                        <!-- Pulse node 2 -->
+                        <g transform="translate(320, 180)">
+                            <circle cx="0" cy="0" r="16" fill="rgba(11, 15, 25, 0.15)">
+                                <animate attributeName="r" values="8;20;8" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="0" cy="0" r="6" fill="#0b0f19" />
+                        </g>
+
+                        <!-- Central Cargo Icon -->
+                        <g transform="translate(200, 190) scale(1.3)">
+                            <rect x="-20" y="-12" width="40" height="24" rx="4" fill="#0b0f19" />
+                            <path d="M -8 -4 L 8 -4 M -8 4 L 8 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                            <path d="M 10 -12 L 20 0 L 20 12 L 10 12 Z" fill="#ff6600" />
+                            <circle cx="15" cy="12" r="4" fill="#0b0f19" />
+                            <circle cx="-10" cy="12" r="4" fill="#0b0f19" />
+                        </g>
+                    </svg>
+                </div>
+                
+                <!-- Floating Info Cards -->
+                <div class="hero-floating-card hero-floating-card-1 floating-element">
+                    <div class="card-icon-wrap">
+                        <i class="ri-radar-line"></i>
+                    </div>
+                    <div class="card-text-wrap">
+                        <h4>Real-Time Tracking</h4>
+                        <p>Active GPS monitoring</p>
+                    </div>
+                </div>
+
+                <div class="hero-floating-card hero-floating-card-2 floating-element-reverse">
+                    <div class="card-icon-wrap" style="background-color: rgba(16, 185, 129, 0.15); color: #10b981;">
+                        <i class="ri-truck-line"></i>
+                    </div>
+                    <div class="card-text-wrap">
+                        <h4>Carrier Network</h4>
+                        <p>15,000+ Vetted Partners</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Band -->
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3><span class="count-up" data-count="99.8" data-decimals="1">0</span>%</h3>
+                <p>On-Time Execution</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="count-up" data-count="15000">0</span>+</h3>
+                <p>Verified Carriers</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="count-up" data-count="24">0</span>/7</h3>
+                <p>Dispatch Support</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="count-up" data-count="100">0</span>%</h3>
+                <p>Load Transparency</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Freight Recovery Section (Value-Benefit / Solution Section) -->
+    <section class="section recovery-section" id="freight-rescue">
+        <div class="container recovery-grid">
+            <div class="recovery-visual" data-reveal="slide-right">
+                <div class="recovery-img-placeholder">
+                    <div class="recovery-overlay-info">
+                        <div class="recovery-overlay-icon">
+                            <i class="ri-alarm-warning-line"></i>
+                        </div>
+                        <div class="recovery-overlay-time">
+                            &lt; <span class="count-up" data-count="60">0</span> Min
+                        </div>
+                        <div class="recovery-overlay-tag">Average Recovery Time</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recovery-content" data-reveal="slide-left">
+                <div class="badge badge-orange">Emergency Freight Support</div>
+                <h2>Driver Cancelled? We'll Recover Your Load Instantly.</h2>
+                <p>
+                    A dropped load or no-show driver shouldn't jeopardize your customer relationships, trigger expensive retail chargebacks, or halt your production line. 
+                </p>
+                <p>
+                    At Skyhaul Transit, we specialize in immediate freight recovery. When you are left stranded, our dedicated response team leverages active tracking and deep capacity corridors to match your cargo with verified, available carriers in under 60 minutes.
+                </p>
+                
+                <div class="recovery-features">
+                    <div class="recovery-feature-item">
+                        <div class="recovery-feature-icon">
+                            <i class="ri-flashlight-line"></i>
+                        </div>
+                        <div class="recovery-feature-text">
+                            <h4>Rapid Dispatch</h4>
+                            <p>Immediate carrier sourcing in your direct lane.</p>
+                        </div>
+                    </div>
+                    <div class="recovery-feature-item">
+                        <div class="recovery-feature-icon">
+                            <i class="ri-shield-user-line"></i>
+                        </div>
+                        <div class="recovery-feature-text">
+                            <h4>Strict Vetting</h4>
+                            <p>Even on short notice, we enforce 100% safety checks.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="btn btn-primary">
+                    Get an Emergency Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="section section-alt" id="services-section">
+        <div class="container">
+            <div class="section-title-wrap" data-reveal="slide-up">
+                <div class="badge">Our Solutions</div>
+                <h2>Reliable Capacity. Engineered Logistics.</h2>
+                <p>We match your shipments with the optimal shipping methods, managing the coordinate details from pickup through transit to on-time delivery.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- FTL Card -->
+                <div class="service-card" data-reveal="slide-up">
+                    <div class="service-icon-wrap">
+                        <i class="ri-archive-stack-line"></i>
+                    </div>
+                    <h3>Full Truckload (FTL)</h3>
+                    <p>Dedicated shipping options for volume freight. Full capacity routes optimizing costs, cargo safety, and speed across North America.</p>
+                    <a href="services.html#ftl" class="service-link">
+                        Explore FTL <i class="ri-arrow-right-line service-link-icon"></i>
+                    </a>
+                </div>
+                
+                <!-- LTL Card -->
+                <div class="service-card" data-reveal="slide-up" class="delay-100">
+                    <div class="service-icon-wrap">
+                        <i class="ri-grid-line"></i>
+                    </div>
+                    <h3>Less Than Truckload (LTL)</h3>
+                    <p>Cost-efficient consolidation for smaller payloads. Benefit from our high-volume shipping rates and extensive regional terminals.</p>
+                    <a href="services.html#ltl" class="service-link">
+                        Explore LTL <i class="ri-arrow-right-line service-link-icon"></i>
+                    </a>
+                </div>
+                
+                <!-- Expedited Card -->
+                <div class="service-card" data-reveal="slide-up" class="delay-200">
+                    <div class="service-icon-wrap">
+                        <i class="ri-speed-up-line"></i>
+                    </div>
+                    <h3>Expedited Freight</h3>
+                    <p>Time-critical transportation. Double-driver teams and direct-routing networks designed for rapid, uninterrupted transit.</p>
+                    <a href="services.html#expedited" class="service-link">
+                        Explore Expedited <i class="ri-arrow-right-line service-link-icon"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: var(--spacing-xl);" data-reveal="fade-in">
+                <a href="services.html" class="btn btn-secondary">
+                    View All Services & Solutions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment & Benefit-focused Capacities Section -->
+    <section class="section" id="equipment-section">
+        <div class="container">
+            <div class="capacity-intro">
+                <div data-reveal="slide-right">
+                    <div class="badge">Our Fleet Capacity</div>
+                    <h2>The Right Equipment for Every Freight Requirement</h2>
+                    <p>No matter the size, weight, or temperature constraints of your cargo, we align your shipment with specialized, road-ready equipment.</p>
+                </div>
+                <div data-reveal="slide-left" style="border-left: 2px solid var(--color-brand-orange); padding-left: var(--spacing-lg);">
+                    <p style="font-size: 1.15rem; color: var(--color-brand-dark); font-weight: var(--weight-medium);">
+                        "Our extensive carrier network provides instant access to specialized trailer types, ensuring your cargo remains secure, protected, and fully compliant throughout its transit."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="equipment-grid">
+                <!-- Dry Van -->
+                <div class="equipment-card" data-reveal="scale-up">
+                    <div class="equipment-icon-wrap">
+                        <i class="ri-box-3-line"></i>
+                    </div>
+                    <h4>Dry Van</h4>
+                    <p class="equipment-benefit">Enclosed security for retail goods, packaging, and non-perishables.</p>
+                </div>
+
+                <!-- Reefer -->
+                <div class="equipment-card" data-reveal="scale-up" class="delay-100">
+                    <div class="equipment-icon-wrap">
+                        <i class="ri-temp-cold-line"></i>
+                    </div>
+                    <h4>Reefer</h4>
+                    <p class="equipment-benefit">Climate controlled insulation for frozen food and sensitive chemicals.</p>
+                </div>
+
+                <!-- Flatbed -->
+                <div class="equipment-card" data-reveal="scale-up" class="delay-200">
+                    <div class="equipment-icon-wrap">
+                        <i class="ri-layout-bottom-line"></i>
+                    </div>
+                    <h4>Flatbed</h4>
+                    <p class="equipment-benefit">Versatile side-loading for heavy machinery, steel, and construction materials.</p>
+                </div>
+
+                <!-- Power Only -->
+                <div class="equipment-card" data-reveal="scale-up" class="delay-300">
+                    <div class="equipment-icon-wrap">
+                        <i class="ri-steering-line"></i>
+                    </div>
+                    <h4>Power Only</h4>
+                    <p class="equipment-benefit">Immediate tractor hookups for pre-loaded shipper-owned trailers.</p>
+                </div>
+
+                <!-- Hotshot -->
+                <div class="equipment-card" data-reveal="scale-up" class="delay-400">
+                    <div class="equipment-icon-wrap">
+                        <i class="ri-speed-mini-line"></i>
+                    </div>
+                    <h4>Hotshot</h4>
+                    <p class="equipment-benefit">Rapid response, medium-duty flatbeds for smaller, time-critical loads.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews / Testimonials Section -->
+    <section class="section section-alt" id="reviews-section">
+        <div class="container">
+            <div class="section-title-wrap" data-reveal="slide-up">
+                <div class="badge">Customer Success</div>
+                <h2>Endorsed by Leading Shippers</h2>
+                <p>Read how our transparency, carrier vetting, and 24/7 communications serve businesses like yours.</p>
+            </div>
+            
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card" data-reveal="slide-up">
+                    <div class="stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">
+                        "Skyhaul Transit rescued our relationship with a major national retailer. Our primary carrier dropped a load on a Friday afternoon. Skyhaul recovered the load and dispatched a replacement driver in 45 minutes, delivering on-time Monday morning."
+                    </p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">MS</div>
+                        <div class="reviewer-info">
+                            <h4>Marcus Sterling</h4>
+                            <p>Logistics Director, Apex Manufacturing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card" data-reveal="slide-up" class="delay-100">
+                    <div class="stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">
+                        "We move high-value refrigerated items daily. Skyhaul's carrier vetting process guarantees that every reefer trailer arriving at our dock has checked temperature logs and active cargo insurance. Absolutely reliable freight management."
+                    </p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">EL</div>
+                        <div class="reviewer-info">
+                            <h4>Elena Rostova</h4>
+                            <p>Supply Chain VP, Horizon Fresh Foods</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card" data-reveal="slide-up" class="delay-200">
+                    <div class="stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">
+                        "Their communication is a breath of fresh air. Instead of tracking down dispatchers, we receive proactive GPS updates throughout the shipment life. They treat every flatbed load with the highest attention."
+                    </p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">DK</div>
+                        <div class="reviewer-info">
+                            <h4>David Kincaid</h4>
+                            <p>Operations Manager, Titan Iron & Steel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full-Width Conversion CTA Banner -->
+    <section class="cta-banner">
+        <div class="container cta-banner-content" data-reveal="scale-up">
+            <h2>Ready to Optimize Your Freight Coordination?</h2>
+            <p>Experience transparent communication, safety-vetted capacity, and competitive pricing for your North American lanes.</p>
+            <a href="contact.html" class="btn btn-primary">
+                Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq-section">
+        <div class="container">
+            <div class="section-title-wrap" data-reveal="slide-up">
+                <div class="badge">FAQs</div>
+                <h2>Frequently Answered Questions</h2>
+                <p>Find quick answers to common shipper questions or submit a direct query to our pricing desks.</p>
+            </div>
+            
+            <div class="faq-split-container">
+                <!-- Left Panel: Short Query Form -->
+                <div class="faq-form-card" data-reveal="slide-right">
+                    <h3>Have a Question?</h3>
+                    <p>Submit your query directly to our dispatch desk and receive a response in under 15 minutes.</p>
+                    <form class="faq-query-form">
+                        <div class="form-group">
+                            <label for="faq-name">Your Name *</label>
+                            <input type="text" id="faq-name" required placeholder="e.g. John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="faq-email">Work Email *</label>
+                            <input type="email" id="faq-email" required placeholder="e.g. logistics@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="faq-msg">Your Question *</label>
+                            <textarea id="faq-msg" rows="3" required placeholder="Describe your freight concern..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.85rem 1.5rem; font-size: 1rem;">
+                            Send My Query <i class="ri-send-plane-line btn-icon"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right Panel: Dropdown FAQs -->
+                <div class="faq-grid" data-reveal="slide-left">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What regions of North America does Skyhaul Transit serve?</span>
+                            <i class="ri-arrow-down-s-line faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We serve customers across the entire United States, Canada, and selected industrial regions of Mexico. Our carrier network supports cross-border shipping, domestic linehauls, and local freight distribution.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do you verify the safety and compliance of your carriers?</span>
+                            <i class="ri-arrow-down-s-line faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our compliance team manually verifies active FMCSA authority, safety ratings (SMS scores), and cargo liability insurance policies ($1,000,000 auto liability and $100,000 cargo limits minimum) before booking any carrier.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I request a spot quote for a single shipment?</span>
+                            <i class="ri-arrow-down-s-line faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We handle both contract logistics for high-volume accounts and individual spot-market quotes. You can submit your shipment details via our quote form and receive options in under 15 minutes.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What happens if a driver cancels my load?</span>
+                            <i class="ri-arrow-down-s-line faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We have a dedicated emergency recovery team. When a dropped load or cancellation occurs, we immediately source and dispatch a replacement carrier in your lanes in under 60 minutes to prevent retail chargebacks and line downs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="assets/logo-flex.png" alt="Skyhaul Transit Inc. Logo" class="footer-logo">
+                <p>Connecting shippers with trusted carriers across North America. Delivering transparency, safety, and performance for every load.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.25rem;">
+                    <a href="#" aria-label="LinkedIn" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>
+                    <a href="#" aria-label="Twitter" class="footer-link"><i class="ri-twitter-x-fill"></i></a>
+                    <a href="#" aria-label="Facebook" class="footer-link"><i class="ri-facebook-box-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="services.html" class="footer-link">Services</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <div class="footer-links">
+                    <a href="ftl.html" class="footer-link">Full Truckload (FTL)</a>
+                    <a href="ltl.html" class="footer-link">Less Than Truckload (LTL)</a>
+                    <a href="expedited.html" class="footer-link">Expedited Cargo</a>
+                    <a href="cross-border.html" class="footer-link">Cross-Border Shipping</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Dispatch</h4>
+                <div class="footer-contact-list">
+                    <div class="footer-contact-item">
+                        <i class="ri-phone-fill footer-contact-icon"></i>
+                        <div class="footer-contact-text">
+                            <h5>Phone Support (24/7)</h5>
+                            <p><a href="tel:18005550199">+1 (800) 555-0199</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="ri-mail-fill footer-contact-icon"></i>
+                        <div class="footer-contact-text">
+                            <h5>Email Address</h5>
+                            <p><a href="mailto:dispatch@skyhaultransit.com">dispatch@skyhaultransit.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 SKYHAUL TRANSIT INC. All rights reserved. <br />
+                      Design & Developed with 🩷 by Custom Design 360</p>
+            <div class="footer-bottom-links">
+                <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Javascript File -->
+    <script src="js/main.js"></script>
+</body>
+</html>
