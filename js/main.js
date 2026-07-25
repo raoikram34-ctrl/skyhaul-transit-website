@@ -93,6 +93,22 @@ function initMobileMenu() {
     
     if (!burger || !nav) return;
     
+    // Inject mobile nav footer dynamically to keep HTML clean and centralized
+    if (!nav.querySelector(".mobile-nav-footer")) {
+        const footerDiv = document.createElement("div");
+        footerDiv.className = "mobile-nav-footer";
+        footerDiv.innerHTML = `
+            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: var(--weight-semibold);">24/7 Dispatch Support</p>
+            <a href="tel:18005550199" style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: var(--weight-bold); color: var(--color-brand-orange); display: flex; align-items: center; gap: 0.35rem; margin-bottom: 1rem;"><i class="ri-phone-fill"></i> +1 (800) 555-0199</a>
+            <div style="display: flex; gap: 1.25rem; font-size: 1.35rem; color: var(--color-brand-dark);">
+                <a href="#" aria-label="LinkedIn" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>
+                <a href="#" aria-label="Twitter" class="footer-link"><i class="ri-twitter-x-fill"></i></a>
+                <a href="#" aria-label="Facebook" class="footer-link"><i class="ri-facebook-box-fill"></i></a>
+            </div>
+        `;
+        nav.appendChild(footerDiv);
+    }
+    
     burger.addEventListener("click", () => {
         nav.classList.toggle("open");
         
@@ -114,7 +130,7 @@ function initMobileMenu() {
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             // Do not close menu if it's the dropdown toggle itself on mobile
-            if (window.innerWidth <= 768 && link.classList.contains("dropdown-toggle")) {
+            if (window.innerWidth <= 1023 && link.classList.contains("dropdown-toggle")) {
                 return;
             }
             if (nav.classList.contains("open")) {
@@ -130,7 +146,7 @@ function initMobileMenu() {
 
     if (dropdownToggle && dropdownMenu) {
         dropdownToggle.addEventListener("click", (e) => {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1023) {
                 e.preventDefault(); // Prevent navigating on mobile click
                 dropdownMenu.classList.toggle("open");
                 if (dropdownIcon) dropdownIcon.classList.toggle("open");
