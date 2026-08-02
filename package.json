@@ -1,0 +1,30 @@
+{
+  "name": "zmn---0078-skyhaul-transit",
+  "version": "1.0.0",
+  "description": "Website development project for SKYHAUL TRANSIT LLC, a trucking brokerage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raoikram34-ctrl/skyhaul-transit-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raoikram34-ctrl/skyhaul-transit-website/issues"
+  },
+  "homepage": "https://github.com/raoikram34-ctrl/skyhaul-transit-website#readme",
+  "dependencies": {
+    "axios": "^1.19.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.1",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^9.0.3"
+  }
+}

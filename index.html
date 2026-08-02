@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://fonts.googleapis.com/; font-src 'self' https://cdn.jsdelivr.net/ https://fonts.gstatic.com/; img-src 'self' data: https://www.gstatic.com/recaptcha/; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/ https://www.google.com/maps/ https://www.google.com/maps/embed/; connect-src 'self' http://localhost:5000 https://www.google.com/recaptcha/;">
     
     <!-- SEO Meta Tags -->
     <title>Skyhaul Transit Inc. | Premium North American Freight Brokerage</title>
@@ -210,19 +211,22 @@
     <!-- Freight Recovery Section (Value-Benefit / Solution Section) -->
     <section class="section recovery-section" id="freight-rescue">
         <div class="container recovery-grid">
-            <div class="recovery-visual" data-reveal="slide-right">
-                <div class="recovery-img-placeholder">
-                    <div class="recovery-overlay-info">
-                        <div class="recovery-overlay-icon">
-                            <i class="ri-alarm-warning-line"></i>
-                        </div>
-                        <div class="recovery-overlay-time">
-                            &lt; <span class="count-up" data-count="60">0</span> Min
-                        </div>
-                        <div class="recovery-overlay-tag">Average Recovery Time</div>
-                    </div>
-                </div>
+           <div class="recovery-visual" data-reveal="slide-right">
+    <div class="recovery-img-wrapper">
+        <img src="assets/Image 2 Home.png" alt="Recovery Service" class="recovery-img">
+
+        <!-- Overlay (same as before) -->
+        <div class="recovery-overlay-info">
+            <div class="recovery-overlay-icon">
+                <i class="ri-alarm-warning-line"></i>
             </div>
+            <div class="recovery-overlay-time">
+                &lt; <span class="count-up" data-count="60">0</span> Min
+            </div>
+            <div class="recovery-overlay-tag">Average Recovery Time</div>
+        </div>
+    </div>
+</div>
             
             <div class="recovery-content" data-reveal="slide-left">
                 <div class="badge badge-orange">Emergency Freight Support</div>
@@ -580,7 +584,7 @@
                         <i class="ri-phone-fill footer-contact-icon"></i>
                         <div class="footer-contact-text">
                             <h5>Phone Support (24/7)</h5>
-                            <p><a href="tel:18005550199">+1 (800) 555-0199</a></p>
+                            <p><a href="tel:2232032018">+1 (223) 203-2018</a></p>
                         </div>
                     </div>
                     <div class="footer-contact-item">

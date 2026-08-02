@@ -99,12 +99,8 @@ function initMobileMenu() {
         footerDiv.className = "mobile-nav-footer";
         footerDiv.innerHTML = `
             <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: var(--weight-semibold);">24/7 Dispatch Support</p>
-            <a href="tel:18005550199" style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: var(--weight-bold); color: var(--color-brand-orange); display: flex; align-items: center; gap: 0.35rem; margin-bottom: 1rem;"><i class="ri-phone-fill"></i> +1 (800) 555-0199</a>
-            <div style="display: flex; gap: 1.25rem; font-size: 1.35rem; color: var(--color-brand-dark);">
-                <a href="#" aria-label="LinkedIn" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>
-                <a href="#" aria-label="Twitter" class="footer-link"><i class="ri-twitter-x-fill"></i></a>
-                <a href="#" aria-label="Facebook" class="footer-link"><i class="ri-facebook-box-fill"></i></a>
-            </div>
+            <a href="tel:2232032018" style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: var(--weight-bold); color: var(--color-brand-orange); display: flex; align-items: center; gap: 0.35rem; margin-bottom: 1rem;"><i class="ri-phone-fill"></i> +1 (223) 203-2018</a>
+            
         `;
         nav.appendChild(footerDiv);
     }
@@ -431,29 +427,97 @@ function initMultiStepForm() {
     });
 
     if (quoteForm) {
-        quoteForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            
-            // Animation for submission state
-            const submitBtn = quoteForm.querySelector("button[type='submit']");
-            if (submitBtn) {
-                submitBtn.innerHTML = "Processing Freight Quote...";
-                submitBtn.disabled = true;
+        quoteForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = quoteForm.querySelector("button[type='submit']");
+    if (submitBtn) {
+        submitBtn.innerHTML = "Processing Freight Quote...";
+        submitBtn.disabled = true;
+    }
+
+    // ✅ COLLECT ALL FORM DATA (ALL STEPS)
+    const formData = {
+        origin: document.getElementById("origin-input").value,
+        destination: document.getElementById("destination-input").value,
+        date: document.getElementById("date-input").value,
+
+        equipment: document.getElementById("equipment-input").value,
+        weight: document.getElementById("weight-input").value,
+        commodity: document.getElementById("commodity-input").value,
+        notes: document.getElementById("notes-input").value,
+
+        company: document.getElementById("company-input").value,
+        name: document.getElementById("name-input").value,
+        email: document.getElementById("email-input").value,
+        phone: document.getElementById("phone-input").value,
+
+        // ✅ reCAPTCHA token
+        recaptcha: grecaptcha.getResponse()
+    };
+
+    // ❗ CHECK captcha
+    if (!formData.recaptcha) {
+        alert("Please verify reCAPTCHA");
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Submit Freight Quote";
+        }
+        return;
+    }
+
+    // Resolve API Endpoint dynamically (local port 5000 vs relative production path)
+    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    const apiEndpoint = isLocal ? "http://localhost:5000/send-quote" : "/send-quote";
+
+    try {
+        const res = await fetch(apiEndpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+        // 🔥 SAFE PARSING
+        const text = await res.text();
+        console.log("SERVER RESPONSE:", text);
+
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (e) {
+            throw new Error("Invalid server response. Please contact support.");
+        }
+
+        if (data.success) {
+            quoteForm.style.display = "none";
+            const formSteps = document.querySelector(".form-steps");
+            if (formSteps) {
+                formSteps.style.display = "none";
             }
 
-            setTimeout(() => {
-                quoteForm.style.display = "none";
-                document.querySelector(".form-steps").style.display = "none";
-                if (successScreen) {
-                    successScreen.style.display = "block";
-                    successScreen.animate([
-                        { opacity: 0, transform: 'scale(0.95)' },
-                        { opacity: 1, transform: 'scale(1)' }
-                    ], { duration: 400, easing: 'ease-out' });
-                }
-            }, 1200);
-        });
+            if (successScreen) {
+                successScreen.style.display = "block";
+            }
+        } else {
+            alert("Error sending quote: " + (data.message || "Please check your input and try again."));
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "Submit Freight Quote";
+            }
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Server error: " + err.message);
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Submit Freight Quote";
+        }
     }
+        }); // 👈 submit event close
+    } // 👈 initMultiStepForm function close
 }
 
 /* ==========================================================
