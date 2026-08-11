@@ -121,6 +121,13 @@ function initMobileMenu() {
         }
     });
 
+    // Close mobile nav when clicking outside of it
+    document.addEventListener("click", (e) => {
+        if (nav.classList.contains("open") && !nav.contains(e.target) && !burger.contains(e.target)) {
+            burger.click();
+        }
+    });
+
     // Close menu on click of nav links on mobile
     const navLinks = document.querySelectorAll(".nav-link");
     navLinks.forEach(link => {

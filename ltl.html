@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://fonts.googleapis.com/; font-src 'self' https://cdn.jsdelivr.net/ https://fonts.gstatic.com/; img-src 'self' data: https://www.gstatic.com/recaptcha/; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/ https://www.google.com/maps/ https://www.google.com/maps/embed/; connect-src 'self' http://localhost:5000 https://www.google.com/recaptcha/;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://fonts.googleapis.com/; font-src 'self' https://cdn.jsdelivr.net/ https://fonts.gstatic.com/; img-src 'self' data: https://www.gstatic.com/recaptcha/; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/ https://www.google.com/maps https://www.google.com/maps/ https://www.google.com/maps/embed/; connect-src 'self' http://localhost:5000 https://www.google.com/recaptcha/;">
     
     <!-- SEO Meta Tags -->
     <title>Less Than Truckload (LTL) Shipping | Skyhaul Transit Inc.</title>
@@ -24,7 +24,7 @@
     <!-- Preloader Overlay -->
     <div class="preloader">
         <div class="preloader-content">
-            <img src="assets/logo-light.svg" alt="Skyhaul Transit Logo" class="preloader-logo">
+            <img src="assets/logo-light.png" alt="Skyhaul Transit Logo" class="preloader-logo">
             <div class="preloader-bar">
                 <div class="preloader-progress"></div>
             </div>
@@ -39,11 +39,11 @@
     <header class="header" id="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo-link">
-                <img src="assets/logo-dark.svg" alt="Skyhaul Transit Inc. Logo" class="logo-img">
+                <img src="assets/logo-dark.png" alt="Skyhaul Transit Inc. Logo" class="logo-img">
             </a>
             
             <nav class="nav" id="main-nav">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link"><i class="ri-home-5-line nav-link-icon"></i>Home</a>
                 <div class="nav-dropdown-wrap">
                     <a href="services.html" class="nav-link dropdown-toggle active">Services <i class="ri-arrow-down-s-line dropdown-icon"></i></a>
                     <div class="nav-dropdown">
@@ -82,8 +82,15 @@
                         </div>
                     </div>
                 </div>
-                <a href="about.html" class="nav-link">About Us</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
+
+                <!-- Mobile Only Service Links -->
+                <a href="ftl.html" class="nav-link mobile-only-link"><i class="ri-archive-stack-line nav-link-icon"></i>Full Truckload (FTL)</a>
+                <a href="ltl.html" class="nav-link mobile-only-link active"><i class="ri-grid-line nav-link-icon"></i>Less Than Truckload (LTL)</a>
+                <a href="expedited.html" class="nav-link mobile-only-link"><i class="ri-speed-up-line nav-link-icon"></i>Expedited Freight</a>
+                <a href="cross-border.html" class="nav-link mobile-only-link"><i class="ri-global-line nav-link-icon"></i>Cross-Border</a>
+
+                <a href="about.html" class="nav-link"><i class="ri-group-line nav-link-icon"></i>About Us</a>
+                <a href="contact.html" class="nav-link"><i class="ri-mail-send-line nav-link-icon"></i>Contact Us</a>
                 <a href="contact.html" class="btn btn-primary header-btn" style="padding: 0.6rem 1.2rem; font-size: 0.95rem; margin-left: 1rem;">
                     Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
                 </a>
@@ -98,20 +105,25 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="about-hero" style="padding-top: 140px; padding-bottom: var(--spacing-xxl);">
-        <div class="container">
-            <div class="badge badge-orange" data-reveal="fade-in">LTL Shipping Solutions</div>
-            <h1 data-reveal-text>Less Than Truckload (LTL) Freight</h1>
-            <p data-reveal="slide-up" class="delay-200" style="max-width: 700px; margin: var(--spacing-sm) auto 0 auto; color: var(--color-text-main);">
-                Consolidate your cargo and optimize logistics spending. Pay only for the trailer space you occupy, backed by reliable transit schedules.
-            </p>
-            <div style="margin-top: var(--spacing-lg);" data-reveal="slide-up" class="delay-300">
-                <a href="contact.html?service=ltl" class="btn btn-primary">
-                    Get an LTL Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+   <section class="ltl-hero">
+    <div class="ltl-hero-overlay"></div>
+
+    <div class="container ltl-hero-content">
+        <div class="badge badge-orange" data-reveal="fade-in">LTL Shipping Solutions</div>
+
+        <h1 data-reveal-text>Less Than Truckload (LTL) Freight</h1>
+
+        <p data-reveal="slide-up" class="delay-200">
+            Consolidate your cargo and optimize logistics spending. Pay only for the trailer space you occupy, backed by reliable transit schedules.
+        </p>
+        <div class="qoute-cta" data-reveal="slide-up" class="delay-300">
+                    <a href="contact.html" class="btn btn-primary">
+                        Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
+                    </a>
+                   
+                </div>
+    </div>
+</section>
 
     <!-- About Service Section -->
     <section class="section">
@@ -143,7 +155,7 @@
             
 <div class="about-illustration" data-reveal="slide-left">
     <div class="about-img-wrapper">
-        <img src="assets/less Than Truckload.png" alt="Trailer Fleet" class="about-img">       
+        <img src="assets/ltl.png" alt="Trailer Fleet" class="about-img">       
     </div>
 </div>
         </div>
@@ -309,7 +321,7 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <img src="assets/logo-light.svg" alt="Skyhaul Transit Inc. Logo" class="footer-logo">
+                <img src="assets/logo-light.png" alt="Skyhaul Transit Inc. Logo" class="footer-logo">
                 <p>Connecting shippers with trusted carriers across North America. Delivering transparency, safety, and performance for every load.</p>
                 <div style="display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.25rem;">
                     <a href="#" aria-label="LinkedIn" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>

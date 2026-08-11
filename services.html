@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://fonts.googleapis.com/; font-src 'self' https://cdn.jsdelivr.net/ https://fonts.gstatic.com/; img-src 'self' data: https://www.gstatic.com/recaptcha/; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/ https://www.google.com/maps/ https://www.google.com/maps/embed/; connect-src 'self' http://localhost:5000 https://www.google.com/recaptcha/;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://fonts.googleapis.com/; font-src 'self' https://cdn.jsdelivr.net/ https://fonts.gstatic.com/; img-src 'self' data: https://www.gstatic.com/recaptcha/; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/ https://www.google.com/maps https://www.google.com/maps/ https://www.google.com/maps/embed/; connect-src 'self' http://localhost:5000 https://www.google.com/recaptcha/;">
     
     <!-- SEO Meta Tags -->
     <title>Freight Services & Logistics Solutions | Skyhaul Transit Inc.</title>
@@ -85,7 +85,7 @@
     <!-- Preloader Overlay -->
     <div class="preloader">
         <div class="preloader-content">
-            <img src="assets/logo-light.svg" alt="Skyhaul Transit Logo" class="preloader-logo">
+            <img src="assets/logo-light.png" alt="Skyhaul Transit Logo" class="preloader-logo">
             <div class="preloader-bar">
                 <div class="preloader-progress"></div>
             </div>
@@ -100,11 +100,11 @@
     <header class="header" id="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo-link">
-                <img src="assets/logo-dark.svg" alt="Skyhaul Transit Inc. Logo" class="logo-img">
+                <img src="assets/logo-dark.png" alt="Skyhaul Transit Inc. Logo" class="logo-img">
             </a>
             
             <nav class="nav" id="main-nav">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link"><i class="ri-home-5-line nav-link-icon"></i>Home</a>
                 <div class="nav-dropdown-wrap">
                     <a href="services.html" class="nav-link dropdown-toggle active">Services <i class="ri-arrow-down-s-line dropdown-icon"></i></a>
                     <div class="nav-dropdown">
@@ -143,8 +143,15 @@
                         </div>
                     </div>
                 </div>
-                <a href="about.html" class="nav-link">About Us</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
+
+                <!-- Mobile Only Service Links -->
+                <a href="ftl.html" class="nav-link mobile-only-link"><i class="ri-archive-stack-line nav-link-icon"></i>Full Truckload (FTL)</a>
+                <a href="ltl.html" class="nav-link mobile-only-link"><i class="ri-grid-line nav-link-icon"></i>Less Than Truckload (LTL)</a>
+                <a href="expedited.html" class="nav-link mobile-only-link"><i class="ri-speed-up-line nav-link-icon"></i>Expedited Freight</a>
+                <a href="cross-border.html" class="nav-link mobile-only-link"><i class="ri-global-line nav-link-icon"></i>Cross-Border</a>
+
+                <a href="about.html" class="nav-link"><i class="ri-group-line nav-link-icon"></i>About Us</a>
+                <a href="contact.html" class="nav-link"><i class="ri-mail-send-line nav-link-icon"></i>Contact Us</a>
                 <a href="contact.html" class="btn btn-primary header-btn" style="padding: 0.6rem 1.2rem; font-size: 0.95rem; margin-left: 1rem;">
                     Get a Freight Quote <i class="ri-arrow-right-line btn-icon"></i>
                 </a>
@@ -159,15 +166,18 @@
     </header>
 
     <!-- Services Hero Section -->
-    <section class="services-intro-section">
-        <div class="container" style="padding-bottom: var(--spacing-xxl);">
-            <div class="badge badge-orange" data-reveal="fade-in">Our Capabilities</div>
-            <h1 data-reveal-text>Comprehensive Logistics & Cargo Solutions</h1>
-            <p data-reveal="slide-up" class="delay-200" style="max-width: 700px; margin: var(--spacing-sm) auto 0 auto; color: var(--color-text-main);">
-                Whether you need dedicated truckloads, regional consolidation, or expedited rescue services, we coordinate your freight with transparency and on-time precision.
-            </p>
-        </div>
-    </section>
+   <section class="about-hero">
+    <div class="about-hero-overlay"></div>
+
+    <div class="container about-hero-content">
+
+        <h1 data-reveal-text>Comprehensive Logistics & Cargo Solutions</h1>
+
+        <p data-reveal="slide-up" class="delay-200">
+Whether you need dedicated truckloads, regional consolidation, or expedited rescue services, we coordinate your freight with transparency and on-time precision.
+        </p>
+    </div>
+</section>
 
     <!-- Detailed Services List -->
     <section class="section">
@@ -175,18 +185,15 @@
             
             <!-- FTL Detail -->
             <div class="service-detail-item" id="ftl">
-                <div class="service-detail-graphic" data-reveal="slide-right">
-                    <div class="service-detail-icon-bg"><i class="ri-archive-stack-line"></i></div>
-                    <div class="service-detail-graphic-inner">
-                        <span class="graphic-badge">High Volume Shipping</span>
-                        <h3>Full Truckload (FTL)</h3>
-                        <p>Perfect for shippers requiring exclusive trailer capacity, minimal handling, and fast point-to-point delivery times.</p>
-                        <div class="graphic-stat-box">
-                            <h4>99.8%</h4>
-                            <p>On-Time Delivery Target</p>
-                        </div>
-                    </div>
-                </div>
+                
+     <div class="about-illustration" data-reveal="slide-left">
+    <div class="about-img-wrapper">
+        <img src="assets/ftl.png" alt="Trailer Fleet" class="about-img">       
+    </div>
+</div>
+
+
+
                 
                 <div class="service-detail-content" data-reveal="slide-left">
                     <h2>Exclusive Trailer Space. Direct Lanes.</h2>
@@ -215,18 +222,11 @@
 
             <!-- LTL Detail -->
             <div class="service-detail-item" id="ltl">
-                <div class="service-detail-graphic" data-reveal="slide-left">
-                    <div class="service-detail-icon-bg"><i class="ri-grid-line"></i></div>
-                    <div class="service-detail-graphic-inner">
-                        <span class="graphic-badge">Consolidated Savings</span>
-                        <h3>Less Than Truckload (LTL)</h3>
-                        <p>Cost-effective options for shippers whose freight does not require a full 53-foot trailer capacity.</p>
-                        <div class="graphic-stat-box" style="border-color: var(--color-brand-orange-glow);">
-                            <h4>30%+</h4>
-                            <p>Average Cost Savings vs FTL</p>
-                        </div>
-                    </div>
-                </div>
+             <div class="about-illustration" data-reveal="slide-left">
+    <div class="about-img-wrapper">
+        <img src="assets/ltl.png" alt="Trailer Fleet" class="about-img">       
+    </div>
+</div>
                 
                 <div class="service-detail-content" data-reveal="slide-right">
                     <h2>Consolidated Logistics. Regional Terminals.</h2>
@@ -255,18 +255,11 @@
 
             <!-- Expedited Detail -->
             <div class="service-detail-item" id="expedited">
-                <div class="service-detail-graphic" data-reveal="slide-right">
-                    <div class="service-detail-icon-bg"><i class="ri-speed-up-line"></i></div>
-                    <div class="service-detail-graphic-inner">
-                        <span class="graphic-badge" style="background-color: rgba(239, 68, 68, 0.15); color: #ef4444;">Time-Critical Dispatch</span>
-                        <h3>Expedited Freight</h3>
-                        <p>Double-driver teams and direct-routing layouts designed to bypass standard transit stops.</p>
-                        <div class="graphic-stat-box">
-                            <h4>24/7</h4>
-                            <p>Continuous Fleet Monitoring</p>
-                        </div>
-                    </div>
-                </div>
+                 <div class="about-illustration" data-reveal="slide-left">
+    <div class="about-img-wrapper">
+        <img src="assets/expedited-freight.png" alt="Trailer Fleet" class="about-img">       
+    </div>
+</div>
                 
                 <div class="service-detail-content" data-reveal="slide-left">
                     <h2>Rapid Transit. Double-Driver Logistics.</h2>
@@ -295,18 +288,11 @@
 
             <!-- Cross-Border Detail -->
             <div class="service-detail-item" id="cross-border">
-                <div class="service-detail-graphic" data-reveal="slide-left">
-                    <div class="service-detail-icon-bg"><i class="ri-global-line"></i></div>
-                    <div class="service-detail-graphic-inner">
-                        <span class="graphic-badge">International Shipping</span>
-                        <h3>Cross-Border Freight</h3>
-                        <p>Coordinated transloading and customs support linking the US, Canada, and Mexico.</p>
-                        <div class="graphic-stat-box">
-                            <h4>3</h4>
-                            <p>North American Countries Served</p>
-                        </div>
-                    </div>
-                </div>
+                 <div class="about-illustration" data-reveal="slide-left">
+    <div class="about-img-wrapper">
+        <img src="assets/cbf.png" alt="Trailer Fleet" class="about-img">       
+    </div>
+</div>
                 
                 <div class="service-detail-content" data-reveal="slide-right">
                     <h2>Seamless Borders. Bilingual Dispatchers.</h2>
@@ -497,7 +483,7 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <img src="assets/logo-light.svg" alt="Skyhaul Transit Inc. Logo" class="footer-logo">
+                <img src="assets/logo-light.png" alt="Skyhaul Transit Inc. Logo" class="footer-logo">
                 <p>Connecting shippers with trusted carriers across North America. Delivering transparency, safety, and performance for every load.</p>
                 <div style="display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.25rem;">
                     <a href="#" aria-label="LinkedIn" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>
