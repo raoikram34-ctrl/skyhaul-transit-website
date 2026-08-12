@@ -2,7 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
-const axios = require("axios");
+const axios = require('axios');
+
+// reCAPTCHA verification function
+const response = await axios.post(
+  `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${token}`,
+  {},
+  { timeout: 5000 }
+);
+
 const path = require("path");
 
 // Express Static middleware (pehle se hoga)
