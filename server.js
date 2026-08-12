@@ -91,7 +91,7 @@ if (EMAIL_USER && EMAIL_PASS) {
     console.warn("⚠️ Warning: EMAIL_USER or EMAIL_PASS environment variables are missing.");
 }
 
-// 📬 Quote submission endpoint (All logic now properly inside this block)
+// 📬 Quote submission endpoint
 app.post('/send-quote', quoteRateLimiter, async (req, res) => {
     try {
         const data = req.body;
@@ -139,7 +139,7 @@ app.post('/send-quote', quoteRateLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: "reCAPTCHA verification failed." });
         }
 
-        // 4. Construct beautiful HTML email
+        // 4. Construct HTML email
         const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -231,8 +231,8 @@ app.post('/send-quote', quoteRateLimiter, async (req, res) => {
 // Serve frontend static assets
 app.use(express.static(path.join(__dirname, ".")));
 
-// Catch-all route to serve the index.html for undefined requests
-app.get("/*", (req, res, next) => {
+// Catch-all route to serve the index.html for undefined requests (FIXED syntax)
+app.get("*", (req, res, next) => {
     if (req.method === "GET" && req.accepts("html") && !req.path.startsWith("/send-quote")) {
         return res.sendFile(path.join(__dirname, "index.html"));
     }
