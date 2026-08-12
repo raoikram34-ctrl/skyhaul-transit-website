@@ -4,6 +4,28 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 const axios = require("axios");
 const path = require("path");
+
+// Express Static middleware (pehle se hoga)
+app.use(express.static(path.join(__dirname)));
+
+// Clean Routes (Extensions ke bina handle karne ke liye)
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'contact.html'));
+});
+
+app.get('/cross-border', (req, res) => {
+    res.sendFile(path.join(__dirname, 'cross-border.html'));
+});
+
+app.get('/expedited', (req, res) => {
+    res.sendFile(path.join(__dirname, 'expedited.html'));
+});
+
+
 const rateLimit = require("express-rate-limit");
 
 const app = express();
