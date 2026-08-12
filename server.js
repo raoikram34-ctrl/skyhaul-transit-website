@@ -7,6 +7,7 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 
 const app = express();
+app.set('trust proxy', 1);
 
 // Retrieve environment variables
 const PORT = process.env.PORT || 5000;
@@ -64,14 +65,14 @@ function sanitizeString(str) {
 // Nodemailer Transporter Setup
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'mail.skyhaultransit.com',
-  port: process.env.EMAIL_PORT || 465,
-  secure: true, // Port 465 ke liye SSL enable rehna chahiye
+  port: parseInt(process.env.EMAIL_PORT) || 465,
+  secure: true, // Port 465 ke liye true
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false // Self-signed SSL cert issue se bachne ke liye
+    rejectUnauthorized: false // Certificate validation issue bypass karne ke liye
   }
 });
 
