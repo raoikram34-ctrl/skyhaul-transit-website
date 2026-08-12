@@ -3,22 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const axios = require('axios');
-
-// reCAPTCHA verification function
-const response = await axios.post(
-  `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${token}`,
-  {},
-  { timeout: 5000 }
-);
-
 const path = require("path");
-
-
-
-
 const rateLimit = require("express-rate-limit");
 
 const app = express();
+
+// 1. A2 Hosting Proxy Fix
 app.set('trust proxy', 1);
 
 // Retrieve environment variables
@@ -29,14 +19,13 @@ const EMAIL_TO = process.env.EMAIL_TO;
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET;
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
 
-// Setup CORS configuration based on environment variables
+// Setup CORS configuration
 const allowedOrigins = ALLOWED_ORIGIN 
     ? ALLOWED_ORIGIN.split(",") 
     : ["http://localhost:5500", "http://127.0.0.1:5500", "http://localhost:5000"];
 
 const corsOptions = {
     origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps, curl, or same-origin static assets)
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -49,11 +38,12 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Set up rate limiting to prevent spam submissions on the API
+// Set up rate limiting
 const quoteRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 10, // Limit each IP to 10 submissions per 15-minute window
+    limit: 10,
     standardHeaders: true,
     legacyHeaders: false,
     message: {
@@ -62,7 +52,7 @@ const quoteRateLimiter = rateLimit({
     }
 });
 
-// Helper function to sanitize user inputs to prevent XSS injection
+// Helper function to sanitize user inputs
 function sanitizeString(str) {
     if (typeof str !== "string") return "";
     return str
@@ -84,7 +74,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false // Certificate validation issue bypass karne ke liye
+    rejectUnauthorized: false
   }
 });
 
@@ -98,59 +88,49 @@ if (EMAIL_USER && EMAIL_PASS) {
         }
     });
 } else {
-    console.warn("⚠️ Warning: EMAIL_USER or EMAIL_PASS environment variables are missing. Email sending will fail.");
+    console.warn("⚠️ Warning: EMAIL_USER or EMAIL_PASS environment variables are missing.");
 }
 
-// 📬 Quote submission endpoint
-app.post('/send-quote', async (req, res) => { // ✅ 'async' add kiya
+// 📬 Quote submission endpoint (All logic now properly inside this block)
+app.post('/send-quote', quoteRateLimiter, async (req, res) => {
     try {
-        const { recaptchaToken } = req.body;
+        const data = req.body;
 
-        // reCAPTCHA verification
-        const googleRes = await axios.post(
-            `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${recaptchaToken}`
-        );
+        // Extract reCAPTCHA token (supporting multiple possible frontend keys)
+        const recaptchaToken = data.recaptcha || data.recaptchaToken;
 
-        if (!googleRes.data.success) {
-            return res.status(400).json({ success: false, message: 'reCAPTCHA verification failed' });
+        // 1. Validate required fields
+        const requiredFields = ["name", "email", "origin", "destination"];
+        for (const field of requiredFields) {
+            if (!data[field] || typeof data[field] !== "string" || data[field].trim() === "") {
+                return res.status(400).json({ 
+                    success: false, 
+                    message: `Missing or empty required field: ${field}` 
+                });
+            }
         }
 
-        // Baki email bhejne ka logic yahan...
-        
-    } catch (error) {
-        console.error('Submission Handler Error:', error);
-        res.status(500).json({ success: false, message: 'Server error' });
-    }
-});
-    // 1. Validate required fields
-    const requiredFields = ["name", "email", "origin", "destination", "recaptcha"];
-    for (const field of requiredFields) {
-        if (!data[field] || typeof data[field] !== "string" || data[field].trim() === "") {
-            return res.status(400).json({ 
-                success: false, 
-                message: `Missing or empty required field: ${field}` 
-            });
+        if (!recaptchaToken) {
+             return res.status(400).json({ success: false, message: "Missing or empty required field: recaptcha" });
         }
-    }
 
-    // 2. Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        return res.status(400).json({ success: false, message: "Invalid email address format." });
-    }
+        // 2. Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            return res.status(400).json({ success: false, message: "Invalid email address format." });
+        }
 
-    // 3. Verify Google reCAPTCHA v2
-    const verifyURL = "https://www.google.com/recaptcha/api/siteverify";
-    try {
+        // 3. Verify Google reCAPTCHA v2
+        const verifyURL = "https://www.google.com/recaptcha/api/siteverify";
         const captchaRes = await axios.post(
             verifyURL,
             new URLSearchParams({
                 secret: RECAPTCHA_SECRET,
-                response: data.recaptcha
+                response: recaptchaToken
             }).toString(),
             {
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                timeout: 6000 // 6 seconds timeout
+                timeout: 6000
             }
         );
 
@@ -159,7 +139,7 @@ app.post('/send-quote', async (req, res) => { // ✅ 'async' add kiya
             return res.status(400).json({ success: false, message: "reCAPTCHA verification failed." });
         }
 
-        // 4. Construct beautiful HTML email including all collected fields
+        // 4. Construct beautiful HTML email
         const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -225,17 +205,17 @@ app.post('/send-quote', async (req, res) => { // ✅ 'async' add kiya
         </html>
         `;
 
-        // 5. Send email with Reply-To designated to the client's email address
+        // 5. Send email
         const mailOptions = {
             from: `"Skyhaul Lead Capture" <${EMAIL_USER}>`,
-            to: EMAIL_TO,
+            to: EMAIL_TO || EMAIL_USER,
             replyTo: data.email,
             subject: `New Freight Quote Lead: ${sanitizeString(data.name)} (${sanitizeString(data.origin)} ➔ ${sanitizeString(data.destination)})`,
             html: htmlContent
         };
 
         await transporter.sendMail(mailOptions);
-        console.log("📨 Lead notification email successfully sent to:", EMAIL_TO);
+        console.log("📨 Lead notification email successfully sent to:", EMAIL_TO || EMAIL_USER);
         
         return res.json({ success: true, message: "Quote submitted successfully." });
 
@@ -248,12 +228,11 @@ app.post('/send-quote', async (req, res) => { // ✅ 'async' add kiya
     }
 });
 
-// Serve frontend static assets from the current directory (for production/deployment self-containment)
+// Serve frontend static assets
 app.use(express.static(path.join(__dirname, ".")));
 
-// Catch-all route to serve the index.html for undefined requests (supporting single port serving)
-app.get("/*splat", (req, res, next) => {
-    // Only return index.html for GET requests that accept HTML
+// Catch-all route to serve the index.html for undefined requests
+app.get("/*", (req, res, next) => {
     if (req.method === "GET" && req.accepts("html") && !req.path.startsWith("/send-quote")) {
         return res.sendFile(path.join(__dirname, "index.html"));
     }
@@ -271,5 +250,5 @@ app.use((err, req, res, next) => {
 
 // Start Server
 app.listen(PORT, () => {
-    console.log(`🚀 Server is successfully listening on http://localhost:${PORT}`);
+    console.log(`🚀 Server is successfully listening on port ${PORT}`);
 });
