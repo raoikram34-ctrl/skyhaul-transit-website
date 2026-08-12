@@ -494,7 +494,7 @@ function initMultiStepForm() {
         try {
             data = JSON.parse(text);
         } catch (e) {
-            throw new Error("Invalid server response. Please contact support.");
+            throw new Error(`Invalid server response (Status: ${res.status}). Server returned: ${text.substring(0, 150)}...`);
         }
 
         if (data.success) {
