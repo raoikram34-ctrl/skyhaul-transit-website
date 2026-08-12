@@ -2,7 +2,7 @@
   "name": "zmn---0078-skyhaul-transit",
   "version": "1.0.0",
   "description": "Website development project for SKYHAUL TRANSIT LLC, a trucking brokerage.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
