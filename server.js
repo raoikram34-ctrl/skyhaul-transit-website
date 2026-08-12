@@ -102,10 +102,26 @@ if (EMAIL_USER && EMAIL_PASS) {
 }
 
 // 📬 Quote submission endpoint
-app.post("/send-quote", quoteRateLimiter, async (req, res, next) => {
-    console.log("📥 Received quote request body keys:", Object.keys(req.body));
-    const data = req.body;
+app.post('/send-quote', async (req, res) => { // ✅ 'async' add kiya
+    try {
+        const { recaptchaToken } = req.body;
 
+        // reCAPTCHA verification
+        const googleRes = await axios.post(
+            `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${recaptchaToken}`
+        );
+
+        if (!googleRes.data.success) {
+            return res.status(400).json({ success: false, message: 'reCAPTCHA verification failed' });
+        }
+
+        // Baki email bhejne ka logic yahan...
+        
+    } catch (error) {
+        console.error('Submission Handler Error:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+});
     // 1. Validate required fields
     const requiredFields = ["name", "email", "origin", "destination", "recaptcha"];
     for (const field of requiredFields) {
