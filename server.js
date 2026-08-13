@@ -64,11 +64,13 @@ function sanitizeString(str) {
         .replace(/\//g, "&#x2F;");
 }
 
-// Nodemailer Transporter Setup
+// Dynamic Port and Secure Check for Nodemailer
+const emailPort = parseInt(process.env.EMAIL_PORT) || 587;
+
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'mail.skyhaultransit.com',
-  port: parseInt(process.env.EMAIL_PORT) || 465,
-  secure: true, // Port 465 ke liye true
+  port: emailPort,
+  secure: emailPort === 465, // Dynamic: Only true for Port 465, false for 587 (STARTTLS)
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -231,8 +233,8 @@ app.post('/send-quote', quoteRateLimiter, async (req, res) => {
 // Serve frontend static assets
 app.use(express.static(path.join(__dirname, ".")));
 
-// Catch-all route to serve the index.html for undefined requests (FIXED syntax)
-app.get("*", (req, res, next) => {
+// Catch-all route to serve the index.html for undefined requests (Express v5 Compatible)
+app.get("*splat", (req, res, next) => {
     if (req.method === "GET" && req.accepts("html") && !req.path.startsWith("/send-quote")) {
         return res.sendFile(path.join(__dirname, "index.html"));
     }
