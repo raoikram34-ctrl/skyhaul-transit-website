@@ -231,7 +231,7 @@ app.post('/send-quote', quoteRateLimiter, async (req, res) => {
 });
 
 // Serve frontend static assets
-app.use(express.static(path.join(__dirname, ".")));
+app.use(express.static(path.join(__dirname, "."), { extensions: ["html"] }));
 
 // Catch-all route to serve the index.html for undefined requests (Express v5 Compatible)
 app.get("*splat", (req, res, next) => {
