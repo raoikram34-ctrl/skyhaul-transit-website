@@ -15,6 +15,7 @@
     
     <!-- Style Sheets -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -280,16 +281,22 @@
                     <form class="faq-query-form">
                         <div class="form-group">
                             <label for="faq-name">Your Name *</label>
-                            <input type="text" id="faq-name" required placeholder="e.g. John Doe">
+                            <input type="text" id="faq-name" name="name" required placeholder="e.g. John Doe">
                         </div>
                         <div class="form-group">
                             <label for="faq-email">Work Email *</label>
-                            <input type="email" id="faq-email" required placeholder="e.g. logistics@company.com">
+                            <input type="email" id="faq-email" name="email" required placeholder="e.g. logistics@company.com">
                         </div>
                         <div class="form-group">
                             <label for="faq-msg">Your Question *</label>
-                            <textarea id="faq-msg" rows="3" required placeholder="Describe your FTL cargo concern..."></textarea>
+                            <textarea id="faq-msg" name="message" rows="3" required placeholder="Describe your freight concern..."></textarea>
                         </div>
+                        
+                        <!-- Google reCAPTCHA Widget -->
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6Lf9lnAtAAAAAPNXwPoENGoxFjzBvUf2JEdiN9uI"></div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary" style="padding: 0.85rem 1.5rem; font-size: 1rem;">
                             Send My Query <i class="ri-send-plane-line btn-icon"></i>
                         </button>
