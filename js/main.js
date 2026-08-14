@@ -527,6 +527,7 @@ function initMultiStepForm() {
     } // 👈 initMultiStepForm function close
 }
 
+
 /* ==========================================================
    10. FAQ Split Query Forms
    ========================================================== */
@@ -534,43 +535,94 @@ function initFAQForms() {
     const faqForms = document.querySelectorAll(".faq-query-form");
     
     faqForms.forEach(form => {
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => { // Made the function async
             e.preventDefault();
             
             const submitBtn = form.querySelector("button[type='submit']");
             if (!submitBtn) return;
+            
+            // Collect form data
+            const formData = {
+                name: form.querySelector("input[name='name']")?.value || "",
+                email: form.querySelector("input[name='email']")?.value || "",
+                message: form.querySelector("textarea[name='message']")?.value || "",
+            };
+
+            // Locate reCAPTCHA inside this specific form and get its response
+            const recaptchaWidget = form.querySelector('.g-recaptcha');
+            if (recaptchaWidget && window.grecaptcha) {
+                // Determine the widget ID if multiple captchas exist on the page
+                const widgetId = recaptchaWidget.getAttribute('data-widget-id');
+                if (widgetId !== null) {
+                    formData.recaptcha = grecaptcha.getResponse(widgetId);
+                } else {
+                    formData.recaptcha = grecaptcha.getResponse();
+                }
+            }
+
+            // Check if reCAPTCHA is verified
+            if (!formData.recaptcha) {
+                alert("Please verify that you are not a robot by completing the reCAPTCHA.");
+                return;
+            }
+
             submitBtn.innerHTML = 'Sending Query... <i class="ri-loader-4-line ri-spin btn-icon"></i>';
             submitBtn.disabled = true;
-            
-            // Simulate API request
-            setTimeout(() => {
-                const card = form.closest(".faq-form-card");
-                if (card) {
-                    // Create success overlay
-                    const successDiv = document.createElement("div");
-                    successDiv.style.textAlign = "center";
-                    successDiv.style.padding = "2rem 0";
-                    successDiv.innerHTML = `
-                        <div class="success-icon-wrap" style="width:60px; height:60px; font-size:2rem; margin-bottom:1rem; background-color:#d1fae5; color:#10b981; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem auto;">
-                            <i class="ri-checkbox-circle-line"></i>
-                        </div>
-                        <h4 style="font-family:var(--font-heading); margin-bottom:0.5rem; font-weight:700;">Query Received!</h4>
-                        <p style="font-size:0.85rem; color:var(--color-text-muted);">A logistics coordinator will email you an answer in under 15 minutes.</p>
-                    `;
-                    
-                    form.style.display = "none";
-                    const title = card.querySelector("h3");
-                    const subtitle = card.querySelector("p");
-                    if (title) title.style.display = "none";
-                    if (subtitle) subtitle.style.display = "none";
-                    
-                    card.appendChild(successDiv);
-                    successDiv.animate([
-                        { opacity: 0, transform: 'scale(0.95)' },
-                        { opacity: 1, transform: 'scale(1)' }
-                    ], { duration: 300, easing: 'ease-out' });
+
+            // Resolve API Endpoint dynamically (local vs production)
+            const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+            const apiEndpoint = isLocal ? "http://localhost:5000/send-query" : "/send-query";
+
+            try {
+                const res = await fetch(apiEndpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    const card = form.closest(".faq-form-card");
+                    if (card) {
+                        // Create success overlay
+                        const successDiv = document.createElement("div");
+                        successDiv.style.textAlign = "center";
+                        successDiv.style.padding = "2rem 0";
+                        successDiv.innerHTML = `
+                            <div class="success-icon-wrap" style="width:60px; height:60px; font-size:2rem; margin-bottom:1rem; background-color:#d1fae5; color:#10b981; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem auto;">
+                                <i class="ri-checkbox-circle-line"></i>
+                            </div>
+                            <h4 style="font-family:var(--font-heading); margin-bottom:0.5rem; font-weight:700;">Query Received!</h4>
+                            <p style="font-size:0.85rem; color:var(--color-text-muted);">A logistics coordinator will email you an answer shortly.</p>
+                        `;
+                        
+                        form.style.display = "none";
+                        const title = card.querySelector("h3");
+                        const subtitle = card.querySelector("p");
+                        if (title) title.style.display = "none";
+                        if (subtitle) subtitle.style.display = "none";
+                        
+                        card.appendChild(successDiv);
+                        successDiv.animate([
+                            { opacity: 0, transform: 'scale(0.95)' },
+                            { opacity: 1, transform: 'scale(1)' }
+                        ], { duration: 300, easing: 'ease-out' });
+                    }
+                } else {
+                    alert("Error sending query: " + (data.message || "Please check your input and try again."));
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Query <i class="ri-arrow-right-line btn-icon"></i>';
                 }
-            }, 1000);
+
+            } catch (err) {
+                console.error(err);
+                alert("Server error: " + err.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Query <i class="ri-arrow-right-line btn-icon"></i>';
+            }
         });
     });
 }
