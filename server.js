@@ -350,12 +350,17 @@ app.post('/send-query', quoteRateLimiter, async (req, res) => {
     }
 });
 
+// JSON error handler for undefined API routes to prevent HTML payload errors
+app.use('/send-*', (req, res) => {
+    res.status(404).json({ success: false, message: "API route not found." });
+});
+
 // Serve frontend static assets
 app.use(express.static(path.join(__dirname, "."), { extensions: ["html"] }));
 
-// Catch-all route to serve the index.html for undefined requests (Express v5 Compatible)
+// Catch-all route to serve the index.html for undefined requests
 app.get("*splat", (req, res, next) => {
-    if (req.method === "GET" && req.accepts("html") && !req.path.startsWith("/send-quote")) {
+    if (req.method === "GET" && req.accepts("html") && !req.path.startsWith("/send-quote") && !req.path.startsWith("/send-query")) {
         return res.sendFile(path.join(__dirname, "index.html"));
     }
     next();
