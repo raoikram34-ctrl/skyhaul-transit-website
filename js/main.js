@@ -473,9 +473,8 @@ function initMultiStepForm() {
         return;
     }
 
-    // Resolve API Endpoint dynamically (local port 5000 vs relative production path)
-    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-    const apiEndpoint = isLocal ? "http://localhost:5000/send-quote" : "/send-quote";
+    // UPDATED: Fixed Live API Endpoint without localhost
+    const apiEndpoint = "/send-quote";
 
     try {
         const res = await fetch(apiEndpoint, {
@@ -569,9 +568,8 @@ function initFAQForms() {
             submitBtn.innerHTML = 'Sending Query... <i class="ri-loader-4-line ri-spin btn-icon"></i>';
             submitBtn.disabled = true;
 
-            // Resolve API Endpoint dynamically (local vs production)
-            const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-            const apiEndpoint = isLocal ? "http://localhost:5000/send-query" : "/send-query";
+            // UPDATED: Fixed Live API Endpoint without localhost
+            const apiEndpoint = "/send-query";
 
             try {
                 const res = await fetch(apiEndpoint, {
